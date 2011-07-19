@@ -1,4 +1,18 @@
 set nocompatible
+
+"vundle
+filetype off
+
+set rtp+=~/vimfiles/vundle.git/
+call vundle#rc()
+Bundle 'Shougo/neocomplcache'
+Bundle 'Shougo/unite.vim'
+Bundle 'thinca/vim-ref'
+Bundle 'thinca/vim-quickrun'
+Bundle 'surround.vim'
+filetype plugin indent on
+
+
 scriptencoding cp932
 "scriptencodingと、このファイルのエンコーディングが一致するよう注意！
 "scriptencodingは、vimの内部エンコーディングと同じものを推奨します。
