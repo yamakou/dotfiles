@@ -2,16 +2,18 @@ set nocompatible
 
 "vundle
 filetype off
-
-set rtp+=~/vimfiles/vundle.git/
+set rtp+=~/.vim/vundle.git/
 call vundle#rc()
 Bundle 'Shougo/neocomplcache'
 Bundle 'Shougo/unite.vim'
 Bundle 'thinca/vim-ref'
 Bundle 'thinca/vim-quickrun'
 Bundle 'surround.vim'
+Bundle 'scrooloose/nerdcommenter'
 filetype plugin indent on
 
+" neocomplcache
+let g:neocomplcache_enable_at_startup = 1 " enable at starting
 
 scriptencoding cp932
 "scriptencodingと、このファイルのエンコーディングが一致するよう注意！
