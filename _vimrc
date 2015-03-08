@@ -12,6 +12,44 @@ set nocompatible
 "Bundle 'scrooloose/nerdcommenter'
 "filetype plugin indent on
 
+
+"--------------------------------------------------------------------------
+"" neobundle
+set nocompatible               " Be iMproved
+filetype off                   " Required!
+
+if has('vim_starting')
+	set runtimepath+=~/.vim/bundle/neobundle.vim/
+  endif
+
+  call neobundle#rc(expand('~/.vim/bundle/'))
+
+  filetype plugin indent on     " Required!
+NeoBundle 'altercation/vim-colors-solarized'
+NeoBundle 'Shougo/neocomplcache'
+NeoBundle 'Shougo/unite.vim'
+NeoBundle 'thinca/vim-ref'
+NeoBundle 'thinca/vim-quickrun'
+NeoBundle 'surround.vim'
+NeoBundle 'scrooloose/nerdcommenter'
+NeoBundle 'mattn/webapi-vim'
+NeoBundle 'mattn/emmet-vim'
+NeoBundle 'tyru/open-browser.vim'
+NeoBundle 'scrooloose/nerdtree'
+NeoBundle 'Yggdroot/indentLine'
+NeoBundle 'junegunn/vim-easy-align'
+NeoBundle 'Shougo/vimfiler.vim'
+
+
+
+" Installation check.
+   if neobundle#exists_not_installed_bundles()
+     echomsg 'Not installed bundles : ' .
+             \ string(neobundle#get_not_installed_bundle_names())
+     echomsg 'Please execute ":NeoBundleInstall" command.'
+     "finish
+   endif
+
 " neocomplcache
 let g:neocomplcache_enable_at_startup = 1 " enable at starting
 
@@ -19,6 +57,38 @@ scriptencoding cp932
 "scriptencodingと、このファイルのエンコーディングが一致するよう注意！
 "scriptencodingは、vimの内部エンコーディングと同じものを推奨します。
 "改行コードは set fileformat=unix に設定するとunixでも使えます。
+
+" open browser
+nmap <Leader>w <Plug>(openbrowser-smart-search)
+nmap <C-l> <Plug>(openbrowser-open)
+
+map <silent> <F5> :!open %<CR><CR>
+
+command! OpenBrowserCurrent execute "OpenBrowser" expand("%:p")
+
+" emmet for jQuery
+let g:user_emmet_settings = webapi#json#decode(join(readfile(expand('~/.snippets_custom.json')), "\n"))
+
+" vim easy align
+" Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
+vmap <Enter> <Plug>(EasyAlign)
+
+" " Start interactive EasyAlign for a motion/text object (e.g. <Leader>aip)
+nmap <Leader>a <Plug>(EasyAlign)
+"Vim Filer
+nnoremap <leader>e :VimFilerExplore -split -winwidth=30 -find -no-quit<CR>
+
+" Unite
+let g:unite_enable_start_insert=1
+let g:unite_source_history_yank_enable =1
+let g:unite_source_file_mru_limit = 200
+nnoremap <silent> ,uy :<C-u>Unite history/yank<CR>
+nnoremap <silent> ,ub :<C-u>Unite buffer<CR>
+nnoremap <silent> ,uf :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
+nnoremap <silent> ,ur :<C-u>Unite -buffer-name=register register<CR>
+nnoremap <silent> ,uu :<C-u>Unite file_mru buffer<CR>
+
+" Solarized
 
 "----------------------------------------
 " ユーザーランタイムパス設定
@@ -76,6 +146,7 @@ endif
 "set viminfo=
 "クリップボードを共有
 set clipboard+=unnamed
+"set clipboard+=autoselect
 "8進数を無効にする。<C-a>,<C-x>に影響する
 set nrformats-=octal
 "キーコードやマッピングされたキー列が完了するのを待つ時間(ミリ秒)
@@ -135,7 +206,7 @@ set visualbell t_vb=
 "Windowsでディレクトリパスの区切り文字表示に / を使えるようにする
 set shellslash
 "行番号表示
-set number
+"set number
 "括弧の対応表示時間
 set showmatch matchtime=1
 "タブを設定
@@ -145,7 +216,7 @@ set autoindent
 "Cインデントの設定
 set cinoptions+=:0
 "タイトルを表示
-set title
+set notitle
 "コマンドラインの高さ (gvimはgvimrcで指定)
 set cmdheight=2
 set laststatus=2
@@ -157,6 +228,8 @@ set display=lastline
 set list
 set listchars=tab:^\ ,trail:~
 
+set tabstop=2
+set shiftwidth=2
 " ハイライトを有効にする
 if &t_Co > 2 || has('gui_running')
   syntax on
@@ -165,6 +238,9 @@ endif
 "色テーマ設定
 "gvimの色テーマは.gvimrcで指定する
 "colorscheme mycolor
+syntax enable
+set background=dark
+colorscheme solarized
 
 """"""""""""""""""""""""""""""
 "ステータスラインに文字コードやBOM、16進表示等表示
@@ -366,3 +442,5 @@ endif
 "----------------------------------------
 " 一時設定
 "----------------------------------------
+"inoremap <ESC> <ESC>:set i。minsert=0<CR>  " ESCでIMEを確実にOFF
+

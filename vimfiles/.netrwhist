@@ -1,0 +1,11 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =9
+let g:netrw_dirhist_1='/Users/yamakou/dotfiles/vimfiles/vundle.git'
+let g:netrw_dirhist_2='/Users/yamakou/dotfiles/.git'
+let g:netrw_dirhist_3='/Users/yamakou/dotfiles/.git/logs'
+let g:netrw_dirhist_4='/Users/yamakou/dotfiles/vimfiles/vundle.git'
+let g:netrw_dirhist_5='/Users/yamakou/Work/SkillHub/www'
+let g:netrw_dirhist_6='/Users/yamakou'
+let g:netrw_dirhist_7='/Users/yamakou/coursera/apps101workspace/Awesome2a/res/layout-land'
+let g:netrw_dirhist_8='/Users/yamakou/Work/bootstrap-3.2.0-dist'
+let g:netrw_dirhist_9='/Users/yamakou'
